@@ -1,0 +1,23 @@
+.navbar-container{
+    background-color: #FFDDD2 !important;
+}
+
+.logo-letters {
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 50px;
+    color: #f58eb0;
+}
+
+.logo-letters:hover {
+    color: #FFACC7;
+}
+
+.menu{
+    font-family: 'RocknRoll One', sans-serif; 
+    font-size: 20px;
+
+}
+.menu:hover {
+    color: #FFACC7;
+}
+

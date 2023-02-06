@@ -1,0 +1,13 @@
+.button-container {
+    border: none;
+    background-color: #FFDDD2;
+    color: #f58eb0;
+    padding: 1rem;
+    border-radius: 20%;
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 20px;
+}
+
+.button-container:hover{
+    color: #FFACC7;;
+}
