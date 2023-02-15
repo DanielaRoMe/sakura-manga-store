@@ -1,19 +1,12 @@
 import React from 'react';
 import './itemListContainer.css';
+import ItemList from '../itemList/itemList';
 
 
-const ItemListContainer = ({children, logo}) => {
+const ItemListContainer = () => {
     return (
         <main className='main-container' >
-
-            <div className='greetings'>
-                {children}
-            </div>
-
-            <div className='logo'> 
-                <img src={logo} />
-            </div>
-
+            <ItemList/>
         </main>
     )
 };

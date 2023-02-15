@@ -1,0 +1,15 @@
+.card-title{
+    font-size: 20px;
+    color: black;
+}
+
+.card-description{
+    font-size: 10px;
+    color: black;
+    text-decoration: none;
+}
+
+.card-container {
+    margin: 10px;
+    padding: 10px;
+}

@@ -10,6 +10,7 @@
 
 .logo-letters:hover {
     color: #FFACC7;
+    text-decoration: none;
 }
 
 .menu{
@@ -19,5 +20,19 @@
 }
 .menu:hover {
     color: #FFACC7;
+}
+
+.nav-typography {
+    font-family: 'RocknRoll One', sans-serif;
+    align-items: center;
+    display: flex;
+   
+}
+
+.link-typography {
+    margin: 10px;
+    text-decoration: none;
+    color: #f58eb0 !important;
+    display: block;
 }
 
