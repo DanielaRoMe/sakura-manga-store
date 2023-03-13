@@ -32,7 +32,10 @@
 .link-typography {
     margin: 10px;
     text-decoration: none;
-    color: #f58eb0 !important;
+    color: #f58eb0;
     display: block;
 }
 
+.collection-align{
+    display: inline-flex;
+}

@@ -1,26 +1,53 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router';
-import ItemCard from '../../componentes/itemCard/itemCard';
-import './bookDetails.css'
+import React from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router";
 
+//Componentes
+import ItemCardDetails from "../../componentes/itemCardDetails/itemCardDetails";
+
+//Firebase
+import { db } from "../../firebase/firebaseConfig";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  documentId,
+} from "firebase/firestore";
+
+//CSS
+import "./bookDetails.css";
 
 const BookDetails = () => {
-    const [book, setBook] = useState({});
+  const [bookDetails, setBookDetails] = useState([]);
+  const { id } = useParams();
 
-    let { id } = useParams();
+  useEffect(() => {
+    const getAlbums = async () => {
+      const q = query(collection(db, "books"), where(documentId(), "==", id));
+      const docs = [];
+      const querySnapshot = await getDocs(q);
 
-    useEffect(() => {
-        fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-            .then((response) => response.json())
-            .then((json) => { setBook(json) })
-    }, [id]);
+      querySnapshot.forEach((doc) => {
+        docs.push({ ...doc.data(), id: doc.id });
+      });
 
-    return (
-        <div key={book.id} className='item-container'>
-            <ItemCard data={book} />
-        </div>
-    )
-}
+      setBookDetails(docs);
+    };
+    getAlbums();
+  }, [id]);
+
+  return (
+    <div className="main-container">
+      {bookDetails.map((book) => {
+        return (
+            <div key={book.id} className="item-container">
+              <ItemCardDetails data={book} />
+            </div>
+        );
+      })}
+    </div>
+  );
+};
 
 export default BookDetails;

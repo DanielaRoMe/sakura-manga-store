@@ -1,15 +1,16 @@
 .main-container{
     background-color: pink;
     font-family: 'RocknRoll One', sans-serif;
-    font-size: 50px;
 }
 
 .greetings{
     text-align: center;
 }
 
-.logo{
-    display:flex;
-    justify-content: center;
-}
+.manga-card-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-left: 35px;
 
+
+}

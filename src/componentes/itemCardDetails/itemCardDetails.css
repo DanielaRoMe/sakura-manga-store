@@ -1,0 +1,32 @@
+.card-detail-container{
+    display: flex;
+}
+
+.container-img{
+    margin: 10px;
+    width: 80vh; 
+    
+}
+
+.img-details{
+    width: 100%;
+    box-shadow: 0 0 15px 10px rgba(0,0,0,0.36);
+
+}
+
+.container-text{
+    font-family: 'RocknRoll One', sans-serif;
+    margin: 10px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    
+}
+
+.title{
+    font-size: 40px;
+    font-weight: bold;
+}

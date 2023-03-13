@@ -1,0 +1,32 @@
+.general-container{
+    background-color: pink;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+    height: 100vh;
+}
+
+.h2-form{
+    font-family: 'RocknRoll One', sans-serif;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.form-container{
+
+}
+
+.btn-form{
+    border: none;
+    background-color: #FFDDD2;
+    color: #f58eb0;
+    padding: 10px5px;
+    border-radius:20%;
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 20px;
+}
+
+.btn-form:hover{
+    color: #FFACC7;
+}

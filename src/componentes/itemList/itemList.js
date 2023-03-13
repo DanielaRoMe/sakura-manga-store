@@ -1,29 +1,43 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+
+//Componentes
 import ItemCard from '../itemCard/itemCard';
-import { Link } from "react-router-dom";
+
+//Firebase
+import { db } from "../../firebase/firebaseConfig";
+import { collection, query, getDocs } from "firebase/firestore";
+
+//CSS
 import './itemList.css';
 
 const ItemList = () => {
+
     const [books, setBooks] = useState([]);
 
-    useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then((response) => response.json())
-            .then((json) => setBooks(json))
-    }, []);
+    useEffect (() => {
+        const getBooks = async () =>{
+            const q = query(collection (db, "books"));
+            const querySnapshot = await getDocs(q);
+            const docs = [];
+            querySnapshot.forEach ((doc) => {
+                docs.push({...doc.data(), id: doc.id})
+            });
+            setBooks(docs);
+        }
+        getBooks()
+    },[])
 
+    // console.log(books);
     return (
         <div className='container'>
             {books.map(book => {
                 return (
-                    <Link to={`/detail/${book.id}`} className='link-aesthetic'>
-                        <ItemCard key={book.id} data={book} />
-                    </Link>
+                    <ItemCard key={book.id} data={book} />
                 )
-            })};
+            })}
         </div>
     );
-};
+};                      
 
 export default ItemList;
