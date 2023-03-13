@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+// import { Formik } from "formik";
 
 //Bootstrap form
 import Button from "react-bootstrap/Button";
@@ -15,6 +16,7 @@ import Swal from "sweetalert2";
 //CSS
 import "../ConfirmShippment/confirmShippment.css"
 
+
 const initialState ={
     name:"",
     lastName:"",
@@ -24,6 +26,7 @@ const initialState ={
 
 const ConfirmShippment = () => {
 
+
     const [values, setValues] = useState(initialState);
 
     const [purchaseId, setPurchaseId] = useState("");
@@ -31,18 +34,38 @@ const ConfirmShippment = () => {
     const handleOnChange = (e) =>{
         const {value, name} = e.target;
         setValues({...values, [name]: value })
+
     };
 
     const handleOnSubmit = async (e) => {
         e.preventDefault();
 
+        
+        if (!values.name || !values.lastName || !values.city || !values.email) {
+            Swal.fire({
+              icon: "error",
+              title: "Opss...",
+              text: "Por favor complete de manera correcta todos los campos.",
+            });
+            return;
+        }
+
+          const validateEmail = /^\S+@\S+\.\S+$/;
+          if (!validateEmail.test(values.email)) {
+            Swal.fire({
+              icon: "error",
+              title: "Opss..",
+              text: "Por favor ingrese un email válido.",
+            });
+            return;
+          }
+
+        
         const docRef = await addDoc(collection(db, "purchases"),{
             values
         });
         setPurchaseId(docRef.id);
 
-        console.log(docRef.id);
-        console.log(purchaseId);
         setValues(initialState);
 
         Swal.fire({
@@ -78,10 +101,6 @@ const ConfirmShippment = () => {
             </Form.Text>
           </Form.Group>
 
-
-          <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
-          </Form.Group>
           <Button className='btn-form' type="submit">
             Submit
           </Button>

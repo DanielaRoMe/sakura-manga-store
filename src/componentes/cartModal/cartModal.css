@@ -2,3 +2,22 @@
     width:auto;
     height:80px;
 }
+
+.btn-modal-generic{
+    border: none;
+    color: #f58eb0;
+    padding:5px;
+}
+
+.m-body{
+    background-color:  #ffaeca ;
+}
+
+.t-body{
+    background-color:  white;
+}
+
+.btn-confirm{
+    border: none;
+    
+}

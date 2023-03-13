@@ -70,7 +70,6 @@ export const CartProvider = ({ children }) => {
     setCart(updatedCart);
   };
 
- 
   return (
     <CartContext.Provider
       value={{

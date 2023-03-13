@@ -55,6 +55,8 @@ const CartModal = ({ isOpen, closeModal }) => {
     const total = cart.reduce((acumulador,item) => acumulador + (item.price * item.quantity), 0);
 
 
+
+
   return (
     <>
       {isOpen && (
@@ -67,7 +69,7 @@ const CartModal = ({ isOpen, closeModal }) => {
               <Modal.Title>Carrito de compras:</Modal.Title>
             </Modal.Header>
 
-            <Modal.Body>
+            <Modal.Body className="m-body">
               <table className="table table-striped">
                 <thead>
                   <tr>
@@ -80,7 +82,7 @@ const CartModal = ({ isOpen, closeModal }) => {
                 </thead>
                 {cart.map((product) => {
                   return (
-                    <tbody id="tablaBody">
+                    <tbody id="tablaBody" className="t-body">
                       <tr>
                         <td>
                           <img
@@ -92,18 +94,18 @@ const CartModal = ({ isOpen, closeModal }) => {
                         <td>{product.title}</td>
                         <td>${product.price}</td>
                         <td>
-                          <button onClick={() => handleDecrement(product)}>
+                          <button onClick={() => handleDecrement(product)} className="btn-modal-generic">
                             <FontAwesomeIcon icon={faMinus} />
                           </button>
                           {product.quantity}
-                          <button onClick={() => handleIncrement(product)}>
+                          <button onClick={() => handleIncrement(product)} className="btn-modal-generic">
                             <FontAwesomeIcon icon={faPlus} />
                           </button>
                         </td>
                         <td>
                           <button
                             type="button"
-                            className="btn"
+                            className="btn btn-modal-generic"
                             onClick={() => handleRemoveItem(product)}
                           >
                             <FontAwesomeIcon icon={faTrash} className="fa-2x" />
@@ -116,14 +118,15 @@ const CartModal = ({ isOpen, closeModal }) => {
               </table>
             </Modal.Body>
 
+            
             <Modal.Footer>
               <Button variant="secondary" onClick={closeModal}> Close </Button>
               {cartCounter ? <p>Total: $ {total}</p> : null}
               <Link to={`/confirmShippment`}>
-                <Button onClick={closeModal}>Finalizar compra </Button>
+                <Button onClick={closeModal} className="btn-confirm">Finalizar compra </Button>
               </Link>
-              
             </Modal.Footer>
+
           </Modal.Dialog>
         </div>
       )}
